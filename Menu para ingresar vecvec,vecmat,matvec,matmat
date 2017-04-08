@@ -1,0 +1,153 @@
+// Menu de Arrays.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define MAX 20
+
+using namespace std;
+
+struct VecV{
+	int subvec[MAX];
+};
+
+struct VecM{
+	int submat[MAX][MAX];
+};
+
+struct MatV{
+	int subvec[MAX];
+};
+
+struct MatM{
+	int submats[MAX][MAX];
+};
+
+void cargar_vec_vec(VecV vect[],int n1,int n2);
+void cargar_vec_mat(VecM vec[],int n1,int n2,int n3);
+void cargar_mat_vec(MatV mat[MAX][MAX],int n1,int n2,int n3);
+void cargar_mat_mat(MatM matr[MAX][MAX],int n1,int n2,int n3,int n4);
+
+void main()
+{
+	VecV vect[MAX];
+	VecM vec[MAX];
+	MatV mat[MAX][MAX];
+	MatM matr[MAX][MAX];
+
+	int op,n1,n2,n3,n4;
+	do{
+		cout<<"         MENU         "<<endl;
+		cout<<"(1) Vector de vectores "<<endl;
+		cout<<"(2) Vector de matrizes "<<endl;
+		cout<<"(3) Matriz de vectores "<<endl;
+		cout<<"(4) Matriz de matrices "<<endl;
+		cout<<"(0) Salir "<<endl;
+		cout<<"Ingrese una opcion"<<endl;
+		cin>>op;
+		switch(op)
+		{
+		case 1:
+			{
+				cout<<"Ingrese el tamano de su vector externo: ";
+				cin>>n1;
+				cout<<"Ingrese el tamano de sus vectores internos: ";
+				cin>>n2;
+				cargar_vec_vec(vect,n1,n2);
+				break;
+			}
+		case 2:
+			{
+				cout<<"Ingrese el tamano de su vector externo: ";
+				cin>>n1;
+				cout<<"Ingrese el tamano de FILAS de su matriz interna: ";
+				cin>>n2;
+				cout<<"Ingrese el tamano de COLIMUNAS de su matriz interna: ";
+				cin>>n3;
+				cargar_vec_mat(vec,n1,n2,n3);
+				break;
+			}
+		case 3:
+			{
+				cout<<"Ingrese el tamano de FILAS de su matriz externa: ";
+				cin>>n1;
+				cout<<"Ingrese el tamano de COLIMUNAS de su matriz externa: ";
+				cin>>n2;
+				cout<<"Ingrese el tamano de su vector interno: ";
+				cin>>n3;
+				cargar_mat_vec(mat,n1,n2,n3);
+				break;
+			}
+		case 4:
+			{
+				cout<<"Ingrese el tamano de FILAS de su matriz EXTERNA: ";
+				cin>>n1;
+				cout<<"Ingrese el tamano de COLIMUNAS de su matriz EXTERNA: ";
+				cin>>n2;
+				cout<<"Ingrese el tamano de FILAS de su matriz INTERNA: ";
+				cin>>n3;
+				cout<<"Ingrese el tamano de COLIMUNAS de su matriz INTERNA: ";
+				cin>>n4;
+				cargar_mat_mat(matr,n1,n2,n3,n4);
+				break;
+			}
+		case 0:
+			{
+				cout<<"Salir";
+				break;
+			}
+		default:
+			{
+				cout<<"Error";
+				break;
+			}
+		}
+}while(op!=0);
+getch();
+}
+
+void cargar_vec_vec(VecV vect[],int n1,int n2)
+{
+	int i,j;
+	for(i=0;i<n1;i++)
+		for(j=0;j<n2;j++)
+		{cout<<"Vector["<<i<<"].subvector["<<j<<"]:";
+		 cin>>vect[i].subvec[j];
+		}
+	
+}
+void cargar_vec_mat(VecM vec[],int n1,int n2,int n3)
+{
+	int i,j,k;
+	for(i=0;i<n1;i++)
+		for(j=0;j<n2;j++)
+			for(k=0;k<n3;k++)
+			{
+				cout<<"Vector["<<i<<"].submatriz["<<j<<"]["<<k<<"]";
+				cin>>vec[i].submat[j][k];
+			}
+}
+void cargar_mat_vec(MatV mat[MAX][MAX],int n1,int n2,int n3)
+{
+	int i,j,k;
+	for(i=0;i<n1;i++)
+		for(j=0;j<n2;j++)
+			for(k=0;k<n3;k++)
+			{
+				cout<<"matriz["<<i<<"]["<<j<<"].subvector["<<k<<"]";
+				cin>>mat[i][j].subvec[k];
+			}
+}
+void cargar_mat_mat(MatM matr[MAX][MAX],int n1,int n2,int n3,int n4)
+{
+	int i,j,k,m;
+	for(i=0;i<n1;i++)
+		for(j=0;j<n2;j++)
+			for(k=0;k<n3;k++)
+				for(m=0;m<n4;m++)
+				{
+					cout<<"Matriz["<<i<<"]["<<j<<"].submatriz["<<k<<"]["<<m<<"]";
+					cin>>matr[i][j].submats[k][m];
+				}
+}
