@@ -1,0 +1,48 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#define MAX 20
+
+using namespace std;
+
+struct vecV{
+	string subvec[MAX];
+};
+
+struct matV{
+	string subvect[MAX];
+};
+
+
+
+
+void main()
+{
+	vecV vec[MAX];
+	matV mat[MAX][MAX];
+	int i,j,n,k,l,m;
+	cout<<"Ingrese el tamano del vector de vectores y el orden de la matriz de vectores: "<<endl;
+	cin>>n;
+	cout<<"Ingrese el vector de vectores: "<<endl;
+	for(i=0;i<n;i++)
+		for(j=0;j<n;j++)
+		{
+			cout<<"Vector ["<<i<<"].subvector["<<j<<"]: ";
+			cin>>vec[i].subvec[j];
+		}
+
+	for(i=0;i<n;i++)
+		for(j=0;j<n;j++)
+			for(k=0;k<n;k++)
+			{
+				mat[i][j].subvect[k]=vec[i].subvec[j];
+			};
+	for(i=0;i<n;i++)
+		for(j=0;j<n;j++)
+			for(k=0;k<n;k++)
+			{
+				cout<<"Matriz ["<<i<<"]["<<j<<"].subvector["<<k<<"]: "<<mat[i][j].subvect[k]<<endl;
+			};
+	getch();
+}
